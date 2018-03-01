@@ -1,0 +1,4 @@
+* eureka (puerto 1111): app spring boot que instancia un servidor eureka para registrar y localizar microservicios. 
+Se compone de un fichero de configuración
+(application.yml) donde está la chicha, y una clase servidora (EurekaApp). El pom.xml es algo diferente
+del pom.xml estándar de spring boot.	
