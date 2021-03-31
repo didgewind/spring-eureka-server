@@ -1,5 +1,24 @@
 Esta versión tira de spring boot 2.0
 
+Hemos añadido un Dockerfile para poder lanzar desde docker.
+Tenemos que empaquetar la app, dockerizarla (desde external tools o con el comando
+docker build -t eureka-service-manual-build .) y luego lanzarla con
+docker run --rm --net empleados-bridge -d --name eureka-service eureka-service-manual-build
+
+Es importante que el nombre del container sea eureka-service, porque es el que utilizan
+empleados-service y empleados-web para encontrar el server eureka (está configurado así
+en sus Dockerfile correspondientes)
+
+Si quisiéramos exponer el puerto 1111 para poder acceder externamente añadiríamos la opción
+-p 1111:1111
+
+El primer 1111 es el puerto externo en el que quiero exponer la aplicación (si lo omito
+se asigna uno aleatorio). El segundo 1111 es el puerto interno que quiero exponer.
+
+Previamente hemos creado la network empleados-bridge con el comando
+
+	docker network create empleados-bridge
+	
 * eureka (puerto 1111): app spring boot que instancia un servidor eureka para registrar y localizar microservicios. 
 Se compone de un fichero de configuración
 (application.yml) donde está la chicha, y una clase servidora (EurekaApp). El pom.xml es algo diferente
