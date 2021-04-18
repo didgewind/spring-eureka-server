@@ -1,5 +1,8 @@
 Esta versión tira de spring boot 2.0
 
+Obtenemos la configuración del config server. Hay un bootstrap.yml donde especificamos
+la url del config server, el nombre del servicio y el profile activo.
+
 Hemos añadido un Dockerfile para poder lanzar desde docker.
 Tenemos que empaquetar la app, dockerizarla (desde external tools o con el comando
 docker build -t eureka-service-manual-build .) y luego lanzarla con
